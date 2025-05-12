@@ -50,8 +50,7 @@ export function setSessionCookie(adminId: string) {
   ).toString("base64")
 
   // Setze den Cookie
-  const cookieStore = cookies()
-  cookieStore.set("admin_session", sessionToken, {
+  cookies().set("admin_session", sessionToken, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "strict",
@@ -62,14 +61,12 @@ export function setSessionCookie(adminId: string) {
 
 // Session-Cookie löschen
 export function clearSessionCookie() {
-  const cookieStore = cookies()
-  cookieStore.delete("admin_session")
+  cookies().delete("admin_session")
 }
 
 // Session überprüfen
 export async function validateSession() {
-  const cookieStore = cookies()
-  const sessionCookie = cookieStore.get("admin_session")?.value
+  const sessionCookie = cookies().get("admin_session")?.value
 
   if (!sessionCookie) {
     return null
@@ -117,8 +114,7 @@ export async function requireAuth() {
 }
 
 export async function validateAdminSession() {
-  const cookieStore = cookies()
-  const sessionCookie = cookieStore.get("admin_session")?.value
+  const sessionCookie = cookies().get("admin_session")?.value
 
   if (!sessionCookie) {
     return null

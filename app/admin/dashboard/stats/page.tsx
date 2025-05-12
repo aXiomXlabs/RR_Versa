@@ -1,5 +1,3 @@
-"use client" // Als Client Component deklarieren
-
 import { serviceClient } from "@/lib/supabase"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import {
@@ -17,6 +15,8 @@ import {
 } from "recharts"
 import { format, subDays, startOfDay, endOfDay } from "date-fns"
 import { de } from "date-fns/locale"
+
+export const revalidate = 0
 
 async function getStats() {
   // Zeitraum: Letzte 7 Tage

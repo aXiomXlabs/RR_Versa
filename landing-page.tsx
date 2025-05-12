@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import { useState } from "react"
 import InteractiveHeader from "./components/interactive-header"
 import AnimatedCTAButton from "./components/animated-cta-button"
 import InteractiveTestimonialCard from "./components/interactive-testimonial-card"
@@ -52,7 +52,7 @@ function LandingPageContent() {
   }
 
   const handleTelegramClick = () => {
-    window.open("https://t.me/rustxrocket", "_blank")
+    window.open("https://t.me/rustrocket", "_blank")
   }
 
   const handleFeaturesClick = () => {
@@ -76,49 +76,49 @@ function LandingPageContent() {
       id: "waitlist",
       icon: <Rocket className="w-5 h-5" />,
       label: t("menu.waitlist"),
-      color: "neon" as "neon",
+      color: "neon",
       onClick: handleWaitlistButtonClick,
     },
     {
       id: "contact",
       icon: <MessageSquare className="w-5 h-5" />,
       label: t("menu.contact"),
-      color: "blue" as "blue",
+      color: "blue",
       onClick: handleOpenContactModal,
     },
     {
       id: "telegram",
       icon: <Zap className="w-5 h-5" />,
       label: t("menu.telegram"),
-      color: "purple" as "purple",
+      color: "purple",
       onClick: handleTelegramClick,
     },
     {
       id: "features",
       icon: <Users className="w-5 h-5" />,
       label: t("menu.features"),
-      color: "red" as "red",
+      color: "red",
       onClick: handleFeaturesClick,
     },
     {
       id: "theme",
       icon: <PaintBrush className="w-5 h-5" />,
       label: `${t("menu.theme")}: ${currentTheme}`,
-      color: "blue" as "blue",
+      color: "blue",
       onClick: () => setIsThemeModalOpen(true),
     },
     {
       id: "language",
       icon: <Globe className="w-5 h-5" />,
       label: t("menu.language"),
-      color: "purple" as "purple",
+      color: "purple",
       onClick: handleOpenLanguageModal,
     },
     {
       id: "top",
       icon: <ArrowUp className="w-5 h-5" />,
       label: t("menu.top"),
-      color: "blue" as "blue",
+      color: "blue",
       onClick: handleScrollToTop,
     },
   ]
@@ -153,9 +153,7 @@ function LandingPageContent() {
       <StructuredData />
 
       {/* Event Tracker */}
-      <React.Suspense fallback={<div>Loading analytics...</div>}>
-        <EventTracker />
-      </React.Suspense>
+      <EventTracker />
 
       <main className="bg-dark text-white font-['Plus Jakarta Sans']">
         {/* Interactive Header (formerly Bot Showcase) */}
@@ -302,8 +300,10 @@ function LandingPageContent() {
 
       {/* Contact Form Modal */}
       <ContactFormModal isOpen={isContactModalOpen} onClose={handleCloseContactModal} />
+
       {/* Waitlist Modal */}
       <WaitlistModal isOpen={isWaitlistModalOpen} onClose={() => setIsWaitlistModalOpen(false)} />
+
       {/* Theme Modal */}
       <ThemePreviewModal
         isOpen={isThemeModalOpen}
@@ -311,6 +311,7 @@ function LandingPageContent() {
         currentTheme={currentTheme}
         onSelectTheme={handleThemeSelect}
       />
+
       {/* Language Modal */}
       <LanguageSelectorModal isOpen={isLanguageModalOpen} onClose={() => setIsLanguageModalOpen(false)} />
     </>

@@ -142,3 +142,50 @@ export async function generateKeywordReport(language: Language): Promise<Keyword
     },
   }
 }
+
+/**
+ * Aktualisiert die Keyword-Rankings mit neuen Daten
+ */
+export async function updateKeywordRankings(
+  keywordData: Array<{
+    keyword: string
+    language: Language
+    position: number
+    searchVolume?: number
+    url: string
+  }>,
+): Promise<{ success: boolean; updatedCount: number }> {
+  try {
+    // Hole aktuelle Daten, um die vorherigen Positionen zu setzen
+    const currentData = await getKeywordData()
+
+    // Erstelle eine Map für schnellen Zugriff
+    const currentKeywordMap = new Map<string, KeywordData>()
+    currentData.forEach((keyword) => {
+      const key = `${keyword.keyword}_${keyword.language}`
+      currentKeywordMap.set(key, keyword)
+    })
+
+    // Bereite die Daten mit vorherigen Positionen vor
+    const dataToStore = keywordData.map((item) => {
+      const key = `${item.keyword}_${item.language}`
+      const currentKeyword = currentKeywordMap.get(key)
+
+      return {
+        ...item,
+        previousPosition: currentKeyword?.position,
+      }
+    })
+
+    // Speichere die aktualisierten Daten
+    await storeKeywordData(dataToStore)
+
+    return {
+      success: true,
+      updatedCount: dataToStore.length,
+    }
+  } catch (error) {
+    console.error("Fehler beim Aktualisieren der Keyword-Rankings:", error)
+    throw error
+  }
+}

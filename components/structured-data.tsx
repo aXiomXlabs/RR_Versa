@@ -44,15 +44,7 @@ export default function StructuredData() {
           caption: "Rust Rocket Logo",
         },
         image: { "@id": `${BASE_URL}/#logo` },
-        sameAs: ["https://x.com/aX_RustRocket", "https://t.me/rustxrocket", "#discord-community-placeholder"],
-        contactPoint: [
-          {
-            "@type": "ContactPoint",
-            email: "info@rust-rocket.com",
-            telephone: "+49 123 4567890",
-            contactType: "customer service",
-          },
-        ],
+        sameAs: ["https://twitter.com/rustrocket", "https://t.me/rustrocket", "https://discord.gg/rustrocket"],
       },
       product: {
         "@context": "https://schema.org",
@@ -153,15 +145,7 @@ export default function StructuredData() {
           caption: "Rust Rocket Logo",
         },
         image: { "@id": `${BASE_URL}/#logo` },
-        sameAs: ["https://x.com/aX_RustRocket", "https://t.me/rustxrocket", "#discord-community-placeholder"],
-        contactPoint: [
-          {
-            "@type": "ContactPoint",
-            email: "info@rust-rocket.com",
-            telephone: "+49 123 4567890",
-            contactType: "customer service",
-          },
-        ],
+        sameAs: ["https://twitter.com/rustrocket", "https://t.me/rustrocket", "https://discord.gg/rustrocket"],
       },
       product: {
         "@context": "https://schema.org",
@@ -262,15 +246,7 @@ export default function StructuredData() {
           caption: "Rust Rocket Logo",
         },
         image: { "@id": `${BASE_URL}/#logo` },
-        sameAs: ["https://x.com/aX_RustRocket", "https://t.me/rustxrocket", "#discord-community-placeholder"],
-        contactPoint: [
-          {
-            "@type": "ContactPoint",
-            email: "info@rust-rocket.com",
-            telephone: "+49 123 4567890",
-            contactType: "customer service",
-          },
-        ],
+        sameAs: ["https://twitter.com/rustrocket", "https://t.me/rustrocket", "https://discord.gg/rustrocket"],
       },
       product: {
         "@context": "https://schema.org",
@@ -371,15 +347,7 @@ export default function StructuredData() {
           caption: "Rust Rocket Logo",
         },
         image: { "@id": `${BASE_URL}/#logo` },
-        sameAs: ["https://x.com/aX_RustRocket", "https://t.me/rustxrocket", "#discord-community-placeholder"],
-        contactPoint: [
-          {
-            "@type": "ContactPoint",
-            email: "info@rust-rocket.com",
-            telephone: "+49 123 4567890",
-            contactType: "customer service",
-          },
-        ],
+        sameAs: ["https://twitter.com/rustrocket", "https://t.me/rustrocket", "https://discord.gg/rustrocket"],
       },
       product: {
         "@context": "https://schema.org",
@@ -480,15 +448,7 @@ export default function StructuredData() {
           caption: "Rust Rocket Logo",
         },
         image: { "@id": `${BASE_URL}/#logo` },
-        sameAs: ["https://x.com/aX_RustRocket", "https://t.me/rustxrocket", "#discord-community-placeholder"],
-        contactPoint: [
-          {
-            "@type": "ContactPoint",
-            email: "info@rust-rocket.com",
-            telephone: "+49 123 4567890",
-            contactType: "customer service",
-          },
-        ],
+        sameAs: ["https://twitter.com/rustrocket", "https://t.me/rustrocket", "https://discord.gg/rustrocket"],
       },
       product: {
         "@context": "https://schema.org",

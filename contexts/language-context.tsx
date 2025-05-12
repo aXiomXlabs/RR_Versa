@@ -100,6 +100,34 @@ const translations: Record<Language, Record<string, string>> = {
     "language.es": "Spanisch",
     "language.fr": "Französisch",
     "language.zh": "Chinesisch",
+
+    // Bots Demo
+    "botdemo.title": "Trading Bot Demo",
+    "botdemo.subtitle":
+      "Erlebe die Leistungsfähigkeit unserer Trading Bots in einer interaktiven Simulation. Wähle einen Bot-Typ, passe die Parameter an und sieh dir die Ergebnisse in Echtzeit an.",
+    "botdemo.cta": "Jetzt zur Warteliste anmelden",
+    "botdemo.ready": "Bereit, mit echten Assets zu handeln?",
+
+    // Bot Typen
+    "bot.sniper.title": "Sniper Bot",
+    "bot.sniper.description":
+      "Blitzschnelle Ausführung für neue Token-Listings und Flash-Opportunities mit minimaler Latenz.",
+    "bot.wallet.title": "Wallet Bot",
+    "bot.wallet.description":
+      "Kopiert die Strategien erfolgreicher Trader mit präziser Timing-Optimierung und Smart Routing.",
+    "bot.whale.title": "Whale Bot",
+    "bot.whale.description": "Verfolgt große Wallet-Bewegungen und positioniert sich strategisch vor Marktbewegungen.",
+    "bot.buy.title": "Buy Bot",
+    "bot.buy.description": "Automatisierte Kaufstrategien basierend auf technischen Indikatoren und Marktbedingungen.",
+
+    // Bot Konfiguration
+    "bot.config.type": "Bot-Typ",
+    "bot.config.aggressiveness": "Aggressivität",
+    "bot.config.safety": "Sicherheitslevel",
+    "bot.config.slippage": "Max. Slippage",
+    "bot.config.gas": "Gas Boost",
+    "bot.config.start": "Simulation starten",
+    "bot.config.running": "Simulation läuft...",
   },
   en: {
     // Navigation
@@ -176,6 +204,34 @@ const translations: Record<Language, Record<string, string>> = {
     "language.es": "Spanish",
     "language.fr": "French",
     "language.zh": "Chinese",
+
+    // Bots Demo
+    "botdemo.title": "Trading Bot Demo",
+    "botdemo.subtitle":
+      "Experience the power of our trading bots in an interactive simulation. Choose a bot type, adjust parameters, and see the results in real-time.",
+    "botdemo.cta": "Join Waitlist Now",
+    "botdemo.ready": "Ready to trade with real assets?",
+
+    // Bot Types
+    "bot.sniper.title": "Sniper Bot",
+    "bot.sniper.description":
+      "Lightning-fast execution for new token listings and flash opportunities with minimal latency.",
+    "bot.wallet.title": "Wallet Bot",
+    "bot.wallet.description":
+      "Copies strategies of successful traders with precise timing optimization and smart routing.",
+    "bot.whale.title": "Whale Bot",
+    "bot.whale.description": "Tracks large wallet movements and positions strategically before market movements.",
+    "bot.buy.title": "Buy Bot",
+    "bot.buy.description": "Automated buying strategies based on technical indicators and market conditions.",
+
+    // Bot Configuration
+    "bot.config.type": "Bot Type",
+    "bot.config.aggressiveness": "Aggressiveness",
+    "bot.config.safety": "Safety Level",
+    "bot.config.slippage": "Max Slippage",
+    "bot.config.gas": "Gas Boost",
+    "bot.config.start": "Start Simulation",
+    "bot.config.running": "Simulation Running...",
   },
   es: {
     // Navigation
@@ -254,6 +310,36 @@ const translations: Record<Language, Record<string, string>> = {
     "language.es": "Español",
     "language.fr": "Francés",
     "language.zh": "Chino",
+
+    // Bots Demo
+    "botdemo.title": "Demo de Bot de Trading",
+    "botdemo.subtitle":
+      "Experimenta el poder de nuestros bots de trading en una simulación interactiva. Elige un tipo de bot, ajusta los parámetros y ve los resultados en tiempo real.",
+    "botdemo.cta": "Únete a la Lista de Espera",
+    "botdemo.ready": "¿Listo para operar con activos reales?",
+
+    // Bot Types
+    "bot.sniper.title": "Bot Sniper",
+    "bot.sniper.description":
+      "Ejecución ultrarrápida para nuevos listados de tokens y oportunidades flash con latencia mínima.",
+    "bot.wallet.title": "Bot Wallet",
+    "bot.wallet.description":
+      "Copia estrategias de traders exitosos con optimización precisa de tiempo y enrutamiento inteligente.",
+    "bot.whale.title": "Bot Whale",
+    "bot.whale.description":
+      "Rastrea movimientos de grandes carteras y se posiciona estratégicamente antes de movimientos del mercado.",
+    "bot.buy.title": "Bot Buy",
+    "bot.buy.description":
+      "Estrategias de compra automatizadas basadas en indicadores técnicos y condiciones del mercado.",
+
+    // Bot Configuration
+    "bot.config.type": "Tipo de Bot",
+    "bot.config.aggressiveness": "Agresividad",
+    "bot.config.safety": "Nivel de Seguridad",
+    "bot.config.slippage": "Deslizamiento Máx",
+    "bot.config.gas": "Impulso de Gas",
+    "bot.config.start": "Iniciar Simulación",
+    "bot.config.running": "Simulación en Curso...",
   },
   fr: {
     // Navigation
@@ -335,6 +421,36 @@ const translations: Record<Language, Record<string, string>> = {
     "language.es": "Espagnol",
     "language.fr": "Français",
     "language.zh": "Chinois",
+
+    // Bots Demo
+    "botdemo.title": "Démo de Bot de Trading",
+    "botdemo.subtitle":
+      "Découvrez la puissance de nos bots de trading dans une simulation interactive. Choisissez un type de bot, ajustez les paramètres et voyez les résultats en temps réel.",
+    "botdemo.cta": "Rejoindre la Liste d'Attente",
+    "botdemo.ready": "Prêt à trader avec des actifs réels?",
+
+    // Bot Types
+    "bot.sniper.title": "Bot Sniper",
+    "bot.sniper.description":
+      "Exécution ultra-rapide pour les nouveaux tokens et opportunités flash avec latence minimale.",
+    "bot.wallet.title": "Bot Wallet",
+    "bot.wallet.description":
+      "Copie les stratégies des traders à succès avec optimisation précise du timing et routage intelligent.",
+    "bot.whale.title": "Bot Whale",
+    "bot.whale.description":
+      "Suit les mouvements des grandes wallets et se positionne stratégiquement avant les mouvements du marché.",
+    "bot.buy.title": "Bot Buy",
+    "bot.buy.description":
+      "Stratégies d'achat automatisées basées sur des indicateurs techniques et conditions de marché.",
+
+    // Bot Configuration
+    "bot.config.type": "Type de Bot",
+    "bot.config.aggressiveness": "Agressivité",
+    "bot.config.safety": "Niveau de Sécurité",
+    "bot.config.slippage": "Slippage Max",
+    "bot.config.gas": "Boost de Gas",
+    "bot.config.start": "Démarrer Simulation",
+    "bot.config.running": "Simulation en Cours...",
   },
   zh: {
     // Navigation
@@ -408,6 +524,31 @@ const translations: Record<Language, Record<string, string>> = {
     "language.es": "西班牙语",
     "language.fr": "法语",
     "language.zh": "中文",
+
+    // Bots Demo
+    "botdemo.title": "交易机器人演示",
+    "botdemo.subtitle": "在交互式模拟中体验我们交易机器人的强大功能。选择机器人类型，调整参数，实时查看结果。",
+    "botdemo.cta": "立即加入等待名单",
+    "botdemo.ready": "准备好用真实资产交易了吗？",
+
+    // Bot Types
+    "bot.sniper.title": "狙击机器人",
+    "bot.sniper.description": "以最小延迟为新代币上市和闪电机会提供闪电般的执行速度。",
+    "bot.wallet.title": "钱包机器人",
+    "bot.wallet.description": "通过精确的时间优化和智能路由复制成功交易者的策略。",
+    "bot.whale.title": "鲸鱼机器人",
+    "bot.whale.description": "跟踪大型钱包动向，在市场变动前进行战略性布局。",
+    "bot.buy.title": "购买机器人",
+    "bot.buy.description": "基于技术指标和市场条件的自动购买策略。",
+
+    // Bot Configuration
+    "bot.config.type": "机器人类型",
+    "bot.config.aggressiveness": "激进程度",
+    "bot.config.safety": "安全级别",
+    "bot.config.slippage": "最大滑点",
+    "bot.config.gas": "Gas提升",
+    "bot.config.start": "开始模拟",
+    "bot.config.running": "模拟运行中...",
   },
 }
 

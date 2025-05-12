@@ -1,5 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server"
-// import { updateKeywordRankings } from "@/lib/seo/keyword-tracker"
+import { updateKeywordRankings } from "@/lib/seo/keyword-tracker"
 import { validateCronSecret } from "@/lib/env-utils"
 
 export const dynamic = "force-dynamic"
@@ -19,10 +19,14 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    // Hier würde die Logik zum Aktualisieren der Keyword-Rankings stehen
-    // await updateKeywordRankings();
-    console.log("Cronjob für Keyword-Ranking-Updates erfolgreich ausgeführt.")
-    return NextResponse.json({ success: true, message: "Keyword-Rankings erfolgreich aktualisiert." })
+    // Führe das Keyword-Ranking-Update durch
+    const result = await updateKeywordRankings()
+
+    return NextResponse.json({
+      success: true,
+      message: "Keyword-Rankings wurden aktualisiert",
+      updatedKeywords: result.length,
+    })
   } catch (error) {
     console.error("Fehler beim Aktualisieren der Keyword-Rankings:", error)
     return NextResponse.json({ error: "Fehler beim Aktualisieren der Keyword-Rankings" }, { status: 500 })

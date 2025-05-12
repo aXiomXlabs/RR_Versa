@@ -11,7 +11,7 @@ type AlertsWidgetProps = {
   isDarkMode: boolean
 }
 
-export function AlertsWidget({ alerts, isDarkMode }: AlertsWidgetProps) {
+export default function AlertsWidget({ alerts, isDarkMode }: AlertsWidgetProps) {
   // Beispiel-Alerts, falls keine vorhanden sind
   const alertsToDisplay =
     alerts.length > 0

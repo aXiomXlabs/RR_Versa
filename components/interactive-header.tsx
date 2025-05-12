@@ -114,11 +114,23 @@ export default function InteractiveHeader() {
                 <span className="text-neon glow-text">{t("header.title")}</span>
               </motion.h1>
 
-              <p className="text-silver max-w-md mb-8">{t("header.subtitle")}</p>
+              <motion.p
+                className="text-silver text-lg md:text-xl mb-8 md:mb-10 text-center md:text-left"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                {t("header.subtitle")}
+              </motion.p>
 
-              <div className="flex justify-center md:justify-start gap-4 flex-wrap">
-                <AnimatedCTAButton href="https://t.me/rustxrocket">{t("header.cta")}</AnimatedCTAButton>
-              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                className="flex justify-center md:justify-start gap-4 flex-wrap"
+              >
+                <AnimatedCTAButton href="https://t.me/rustrocket">{t("header.cta")}</AnimatedCTAButton>
+              </motion.div>
 
               {/* Floating logo animation - hidden on mobile */}
               <motion.div

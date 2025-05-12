@@ -1,4 +1,5 @@
-import { requireAuth, getUserProfile, createServerSupabaseClient } from "@/lib/supabase-server"
+import { requireAuth, getUserProfile } from "@/lib/auth-utils"
+import { createServerSupabaseClient } from "@/lib/auth-utils"
 import DashboardLayout from "@/components/dashboard/dashboard-layout"
 import SettingsForm from "@/components/dashboard/settings/settings-form"
 

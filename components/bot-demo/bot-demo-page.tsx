@@ -13,7 +13,11 @@ import type { BotType, BotConfig, SimulationResults } from "./types"
 import { defaultConfigs } from "./default-configs"
 import AnimatedCTAButton from "../animated-cta-button"
 
+// Importiere den Sprachkontext
+import { useLanguage } from "../../contexts/language-context"
+
 export default function BotDemoPage() {
+  const { t } = useLanguage() // Füge den Sprachkontext hinzu
   const [selectedBot, setSelectedBot] = useState<BotType>("sniper")
   const [botConfig, setBotConfig] = useState<BotConfig>(defaultConfigs.sniper)
   const [simulationResults, setSimulationResults] = useState<SimulationResults | null>(null)
@@ -59,12 +63,9 @@ export default function BotDemoPage() {
             className="text-center mb-12"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-neon glow-text">Trading Bot Demo</span>
+              <span className="text-neon glow-text">{t("botdemo.title")}</span>
             </h1>
-            <p className="text-silver max-w-2xl mx-auto">
-              Erlebe die Leistungsfähigkeit unserer Trading Bots in einer interaktiven Simulation. Wähle einen Bot-Typ,
-              passe die Parameter an und sieh dir die Ergebnisse in Echtzeit an.
-            </p>
+            <p className="text-silver max-w-2xl mx-auto">{t("botdemo.subtitle")}</p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -104,9 +105,9 @@ export default function BotDemoPage() {
           <StrategyExplainer botType={selectedBot} />
 
           <div className="mt-16 text-center">
-            <h2 className="text-2xl font-bold mb-6">Bereit, mit echten Assets zu handeln?</h2>
+            <h2 className="text-2xl font-bold mb-6">{t("botdemo.ready")}</h2>
             <AnimatedCTAButton href="#" onClick={(e) => e.preventDefault()}>
-              Jetzt zur Warteliste anmelden
+              {t("botdemo.cta")}
             </AnimatedCTAButton>
           </div>
         </div>

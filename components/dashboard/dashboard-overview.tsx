@@ -4,15 +4,14 @@ import { useState, useEffect } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { PerformanceWidget } from "./widgets/performance-widget"
 import { ActiveBotsWidget } from "./widgets/active-bots-widget"
-import { AlertsWidget } from "./widgets/alerts-widget"
 import { TransactionsWidget } from "./widgets/transactions-widget"
+import AlertsWidget from "./widgets/alerts-widget"
 import { Plus, LayoutGrid, LayoutList } from "lucide-react"
 
 export function DashboardOverview({ user, botData, transactionData, performanceData, alertData }: any) {
   const [activeTab, setActiveTab] = useState("overview")
   const [layoutMode, setLayoutMode] = useState<"grid" | "list">("grid")
   const [isMobile, setIsMobile] = useState(false)
-  const isDarkMode = false; // Platzhalter, später korrekt implementieren
 
   // Überprüfen Sie die Bildschirmgröße
   useEffect(() => {
@@ -78,11 +77,10 @@ export function DashboardOverview({ user, botData, transactionData, performanceD
           value="overview"
           className={layoutMode === "grid" ? "grid grid-cols-1 md:grid-cols-2 gap-4 col-span-2" : "space-y-4"}
         >
-          {/* @ts-ignore Annahme: performanceData enthält performanceData und aggregatedData als Eigenschaften */}
-          <PerformanceWidget performanceData={performanceData?.performanceData} aggregatedData={performanceData?.aggregatedData} />
+          <PerformanceWidget data={performanceData} compact={isMobile} />
           <ActiveBotsWidget data={botData} compact={isMobile} />
           <TransactionsWidget data={transactionData} compact={isMobile} />
-          <AlertsWidget alerts={alertData} isDarkMode={isDarkMode} />
+          <AlertsWidget data={alertData} compact={isMobile} />
         </TabsContent>
 
         <TabsContent value="active" className="space-y-4 col-span-2">

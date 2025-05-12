@@ -1,5 +1,6 @@
-import { requireAuth, getUserProfile, initUserSettings, createServerSupabaseClient } from "@/lib/supabase-server"
+import { requireAuth, getUserProfile, initUserSettings } from "@/lib/auth-utils"
 import DashboardLayout from "@/components/dashboard/dashboard-layout"
+import { createServerSupabaseClient } from "@/lib/auth-utils"
 import { DashboardOverview } from "@/components/dashboard/dashboard-overview"
 
 export const metadata = {

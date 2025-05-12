@@ -33,6 +33,41 @@
       ]
     }
   ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "rust-rocket.com"
+        }
+      ],
+      "destination": "https://www.rust-rocket.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "rustrocket.com"
+        }
+      ],
+      "destination": "https://www.rust-rocket.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.rustrocket.com"
+        }
+      ],
+      "destination": "https://www.rust-rocket.com/:path*",
+      "permanent": true
+    }
+  ],
   "crons": [
     {
       "path": "/api/cron/update-keywords?secret=$CRON_SECRET",

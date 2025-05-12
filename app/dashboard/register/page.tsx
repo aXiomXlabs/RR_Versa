@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { createClientSupabaseClient } from "@/lib/supabase-client"
+import { createClientSupabaseClient } from "@/lib/auth-utils"
 import { Eye, EyeOff, Mail, Lock, User, AlertCircle, Check } from "lucide-react"
 
 export default function RegisterPage() {

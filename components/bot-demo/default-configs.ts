@@ -1,4 +1,6 @@
-import type { BotConfig, BotType } from "./types"
+"use client"
+
+import type { BotType, BotConfig } from "./types"
 
 export const defaultConfigs: Record<BotType, BotConfig> = {
   sniper: {
@@ -59,7 +61,7 @@ export const defaultConfigs: Record<BotType, BotConfig> = {
   },
 }
 
-export const botDescriptions: Record<BotType, { title: string; description: string; color: string }> = {
+export const botDescriptions = {
   sniper: {
     title: "Sniper Bot",
     description: "Blitzschnelle Ausführung für neue Token-Listings und Flash-Opportunities mit minimaler Latenz.",
@@ -67,12 +69,12 @@ export const botDescriptions: Record<BotType, { title: string; description: stri
   },
   wallet: {
     title: "Wallet Bot",
-    description: "Kopiert die Strategien erfolgreicher Trader mit präziser Timing-Optimierung und Smart Routing.",
+    description: "Kopiert Strategien von erfolgreichen Tradern mit präziser Timing-Optimierung und Smart Routing.",
     color: "blue",
   },
   whale: {
     title: "Whale Bot",
-    description: "Verfolgt große Wallet-Bewegungen und positioniert sich strategisch vor Marktbewegungen.",
+    description: "Trackt große Wallet-Bewegungen und positioniert sich strategisch vor Marktbewegungen.",
     color: "purple",
   },
   buy: {

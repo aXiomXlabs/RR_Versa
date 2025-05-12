@@ -7,7 +7,7 @@ import ProfileSettings from "./profile-settings"
 import AppearanceSettings from "./appearance-settings"
 import NotificationSettings from "./notification-settings"
 import WalletSettings from "./wallet-settings"
-// import SecuritySettings from "./security-settings" // Auskommentiert, da Datei fehlt
+import SecuritySettings from "./security-settings"
 
 type SettingsFormProps = {
   user: any
@@ -49,12 +49,12 @@ export default function SettingsForm({ user, profile, settings, wallets }: Setti
             >
               Wallets
             </TabsTrigger>
-            {/* <TabsTrigger
+            <TabsTrigger
               value="security"
               className={`data-[state=active]:${isDarkMode ? "bg-gray-800 text-white" : "bg-white text-gray-900"}`}
             >
               Sicherheit
-            </TabsTrigger> */}
+            </TabsTrigger>
           </TabsList>
         </div>
 
@@ -103,7 +103,7 @@ export default function SettingsForm({ user, profile, settings, wallets }: Setti
             </motion.div>
           </TabsContent>
 
-          {/* <TabsContent value="security" className="mt-0">
+          <TabsContent value="security" className="mt-0">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -112,7 +112,7 @@ export default function SettingsForm({ user, profile, settings, wallets }: Setti
             >
               <SecuritySettings user={user} isDarkMode={isDarkMode} />
             </motion.div>
-          </TabsContent> */}
+          </TabsContent>
         </div>
       </Tabs>
     </div>

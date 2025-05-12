@@ -7,14 +7,19 @@ import { motion } from "framer-motion"
 import { Card } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import type { BotType } from "./types"
-import { botDescriptions } from "./default-configs"
-import { Rocket, Wallet, FishIcon as Whale, ShoppingCart, Zap, Shield, Gauge, Target } from "lucide-react"
+import { Zap, Shield, Gauge, Target } from "lucide-react"
+import { useLanguage } from "../../contexts/language-context"
+import { getBotIcon, useBotDescriptions } from "./bot-utils"
+// Importiere den Sprachkontext am Anfang der Datei
 
 interface StrategyExplainerProps {
   botType: BotType
 }
 
 export default function StrategyExplainer({ botType }: StrategyExplainerProps) {
+  const { t } = useLanguage()
+  const { getBotDescription } = useBotDescriptions()
+  const botDescription = getBotDescription(botType)
   const [expandedStrategy, setExpandedStrategy] = useState<string | null>(null)
 
   const toggleStrategy = (id: string) => {
@@ -22,19 +27,6 @@ export default function StrategyExplainer({ botType }: StrategyExplainerProps) {
       setExpandedStrategy(null)
     } else {
       setExpandedStrategy(id)
-    }
-  }
-
-  const getBotIcon = (type: BotType) => {
-    switch (type) {
-      case "sniper":
-        return <Rocket className="w-5 h-5" />
-      case "wallet":
-        return <Wallet className="w-5 h-5" />
-      case "whale":
-        return <Whale className="w-5 h-5" />
-      case "buy":
-        return <ShoppingCart className="w-5 h-5" />
     }
   }
 
@@ -143,13 +135,13 @@ export default function StrategyExplainer({ botType }: StrategyExplainerProps) {
       <Card className="bg-dark/30 backdrop-blur-md border-white/10 p-6">
         <div className="flex items-center mb-6">
           <div
-            className={`w-10 h-10 rounded-lg bg-gradient-to-br from-${botDescriptions[botType].color} to-black/80 flex items-center justify-center mr-4`}
+            className={`w-10 h-10 rounded-lg bg-gradient-to-br from-${botDescription.color} to-black/80 flex items-center justify-center mr-4`}
           >
             {getBotIcon(botType)}
           </div>
           <div>
-            <h3 className="text-xl font-bold">{botDescriptions[botType].title} Strategien</h3>
-            <p className="text-sm text-silver">{botDescriptions[botType].description}</p>
+            <h3 className="text-xl font-bold">{botDescription.title} Strategien</h3>
+            <p className="text-sm text-silver">{botDescription.description}</p>
           </div>
         </div>
 
@@ -176,9 +168,9 @@ export default function StrategyExplainer({ botType }: StrategyExplainerProps) {
                   >
                     <div className="flex items-center">
                       <div
-                        className={`w-8 h-8 rounded-full bg-${botDescriptions[botType].color}/20 flex items-center justify-center mr-3`}
+                        className={`w-8 h-8 rounded-full bg-${botDescription.color}/20 flex items-center justify-center mr-3`}
                       >
-                        <Target className={`w-4 h-4 text-${botDescriptions[botType].color}`} />
+                        <Target className={`w-4 h-4 text-${botDescription.color}`} />
                       </div>
                       <div>
                         <h4 className="font-medium">{strategy.title}</h4>
@@ -223,28 +215,28 @@ export default function StrategyExplainer({ botType }: StrategyExplainerProps) {
                     ? "Unter 10ms Reaktionszeit für maximalen Vorteil bei neuen Listings."
                     : "Schnelle und präzise Ausführung ohne emotionale Verzögerungen."
                 }
-                color={botDescriptions[botType].color}
+                color={botDescription.color}
               />
 
               <FeatureCard
                 icon={<Shield className="w-5 h-5" />}
                 title="Risikomanagement"
                 description="Automatische Take-Profit und Stop-Loss Mechanismen schützen dein Kapital."
-                color={botDescriptions[botType].color}
+                color={botDescription.color}
               />
 
               <FeatureCard
                 icon={<Gauge className="w-5 h-5" />}
                 title="Anpassbare Parameter"
                 description="Passe alle Bot-Parameter an deine Trading-Strategie und Risikobereitschaft an."
-                color={botDescriptions[botType].color}
+                color={botDescription.color}
               />
 
               <FeatureCard
                 icon={<Target className="w-5 h-5" />}
                 title="Smart Routing"
                 description="Automatische Auswahl der besten DEX für maximale Liquidität und minimale Slippage."
-                color={botDescriptions[botType].color}
+                color={botDescription.color}
               />
             </div>
           </TabsContent>
@@ -256,17 +248,17 @@ export default function StrategyExplainer({ botType }: StrategyExplainerProps) {
                   <UseCaseItem
                     title="IDO und Token-Launches"
                     description="Sei der Erste bei neuen Token-Launches und Initial DEX Offerings (IDOs)."
-                    color={botDescriptions[botType].color}
+                    color={botDescription.color}
                   />
                   <UseCaseItem
                     title="Flash Opportunities"
                     description="Nutze kurzfristige Preis-Diskrepenzen und Flash-Crashes für schnelle Gewinne."
-                    color={botDescriptions[botType].color}
+                    color={botDescription.color}
                   />
                   <UseCaseItem
                     title="Liquiditätshinzufügungen"
                     description="Erkenne und nutze neue Liquiditätshinzufügungen bei bestehenden Tokens."
-                    color={botDescriptions[botType].color}
+                    color={botDescription.color}
                   />
                 </>
               )}
@@ -276,17 +268,17 @@ export default function StrategyExplainer({ botType }: StrategyExplainerProps) {
                   <UseCaseItem
                     title="Passives Copy Trading"
                     description="Kopiere erfolgreiche Trader ohne aktives Management deinerseits."
-                    color={botDescriptions[botType].color}
+                    color={botDescription.color}
                   />
                   <UseCaseItem
                     title="Diversifikation"
                     description="Kopiere mehrere erfolgreiche Wallets gleichzeitig für ein diversifiziertes Portfolio."
-                    color={botDescriptions[botType].color}
+                    color={botDescription.color}
                   />
                   <UseCaseItem
                     title="Lernmodus"
                     description="Verstehe die Strategien erfolgreicher Trader durch Analyse ihrer Trades."
-                    color={botDescriptions[botType].color}
+                    color={botDescription.color}
                   />
                 </>
               )}
@@ -296,17 +288,17 @@ export default function StrategyExplainer({ botType }: StrategyExplainerProps) {
                   <UseCaseItem
                     title="Frühe Trend-Erkennung"
                     description="Erkenne neue Trends, bevor sie mainstream werden, durch Whale-Bewegungen."
-                    color={botDescriptions[botType].color}
+                    color={botDescription.color}
                   />
                   <UseCaseItem
                     title="Akkumulations-Erkennung"
                     description="Identifiziere Tokens, die von großen Playern still akkumuliert werden."
-                    color={botDescriptions[botType].color}
+                    color={botDescription.color}
                   />
                   <UseCaseItem
                     title="Dump-Prävention"
                     description="Erkenne frühzeitig, wenn Whales beginnen zu verkaufen, und schütze dein Portfolio."
-                    color={botDescriptions[botType].color}
+                    color={botDescription.color}
                   />
                 </>
               )}
@@ -316,17 +308,17 @@ export default function StrategyExplainer({ botType }: StrategyExplainerProps) {
                   <UseCaseItem
                     title="Automatisierte Strategien"
                     description="Setze deine eigenen Trading-Strategien um, ohne manuell handeln zu müssen."
-                    color={botDescriptions[botType].color}
+                    color={botDescription.color}
                   />
                   <UseCaseItem
                     title="DCA-Strategien"
                     description="Implementiere Dollar-Cost-Averaging Strategien für langfristigen Vermögensaufbau."
-                    color={botDescriptions[botType].color}
+                    color={botDescription.color}
                   />
                   <UseCaseItem
                     title="Multi-Token Trading"
                     description="Handle mehrere Tokens gleichzeitig mit individuellen Strategien."
-                    color={botDescriptions[botType].color}
+                    color={botDescription.color}
                   />
                 </>
               )}

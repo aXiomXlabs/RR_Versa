@@ -1,16 +1,18 @@
 "use client"
 
 import { useState } from "react"
-import { motion } from "framer-motion"
 import { Card } from "@/components/ui/card"
 import { Slider } from "@/components/ui/slider"
-import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Rocket, Wallet, FishIcon as Whale, ShoppingCart, Zap, Shield, Gauge } from "lucide-react"
+import { Loader2, Rocket, Wallet, FishIcon as Whale, ShoppingCart } from "lucide-react"
 import type { BotType, BotConfig } from "./types"
-import { botDescriptions } from "./default-configs"
-import AnimatedCTAButton from "../animated-cta-button"
+
+// Importiere den Sprachkontext am Anfang der Datei
+import { useLanguage } from "../../contexts/language-context"
+import { CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { getBotColorClass } from "./bot-utils"
 
 interface BotConfigPanelProps {
   selectedBot: BotType
@@ -21,6 +23,7 @@ interface BotConfigPanelProps {
   isSimulating: boolean
 }
 
+// Füge den Sprachkontext zur Komponente hinzu
 export default function BotConfigPanel({
   selectedBot,
   config,
@@ -29,6 +32,7 @@ export default function BotConfigPanel({
   onStartSimulation,
   isSimulating,
 }: BotConfigPanelProps) {
+  const { t } = useLanguage()
   const [activeTab, setActiveTab] = useState<"basic" | "advanced">("basic")
 
   const handleSliderChange = (key: keyof BotConfig, value: number[]) => {
@@ -64,252 +68,183 @@ export default function BotConfigPanel({
     }
   }
 
+  function BotTypeButton({
+    botType,
+    isSelected,
+    onClick,
+    title,
+    description,
+    color,
+  }: {
+    botType: BotType
+    isSelected: boolean
+    onClick: () => void
+    title: string
+    description: string
+    color: string
+  }) {
+    const getBotIcon = () => {
+      switch (botType) {
+        case "sniper":
+          return <Rocket className="w-5 h-5" />
+        case "wallet":
+          return <Wallet className="w-5 h-5" />
+        case "whale":
+          return <Whale className="w-5 h-5" />
+        case "buy":
+          return <ShoppingCart className="w-5 h-5" />
+      }
+    }
+
+    return (
+      <button
+        className={`p-3 rounded-lg text-left transition-all ${
+          isSelected
+            ? `bg-${color} bg-opacity-20 border border-${color} border-opacity-50`
+            : "bg-white/5 border border-white/10 hover:bg-white/10"
+        }`}
+        onClick={onClick}
+      >
+        <div className="flex items-center mb-1">
+          <div
+            className={`w-8 h-8 rounded-full ${
+              isSelected ? `bg-${color} bg-opacity-30` : "bg-white/10"
+            } flex items-center justify-center mr-2`}
+          >
+            {getBotIcon()}
+          </div>
+          <span className="font-medium">{title}</span>
+        </div>
+        <p className="text-xs text-silver line-clamp-2">{description}</p>
+      </button>
+    )
+  }
+
   return (
-    <Card className="bg-dark/30 backdrop-blur-md border-white/10 p-6">
-      <h2 className="text-xl font-bold mb-4">Bot Konfiguration</h2>
-
-      {/* Bot Type Selection */}
-      <div className="mb-6">
-        <label className="text-sm text-silver mb-2 block">Bot-Typ auswählen</label>
+    <Card className="bg-dark/30 backdrop-blur-md border-white/10">
+      <CardHeader>
+        <CardTitle>{t("bot.config.type")}</CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-6">
         <div className="grid grid-cols-2 gap-3">
-          {(["sniper", "wallet", "whale", "buy"] as BotType[]).map((botType) => (
-            <button
-              key={botType}
-              className={`p-3 rounded-lg flex items-center justify-center gap-2 transition-all ${
-                selectedBot === botType
-                  ? `bg-${botDescriptions[botType].color} text-black font-medium`
-                  : "bg-white/10 hover:bg-white/20"
-              }`}
-              onClick={() => onBotSelect(botType)}
+          <BotTypeButton
+            botType="sniper"
+            isSelected={selectedBot === "sniper"}
+            onClick={() => onBotSelect("sniper")}
+            title={t("bot.sniper.title")}
+            description={t("bot.sniper.description")}
+            color="neon"
+          />
+          <BotTypeButton
+            botType="wallet"
+            isSelected={selectedBot === "wallet"}
+            onClick={() => onBotSelect("wallet")}
+            title={t("bot.wallet.title")}
+            description={t("bot.wallet.description")}
+            color="blue"
+          />
+          <BotTypeButton
+            botType="whale"
+            isSelected={selectedBot === "whale"}
+            onClick={() => onBotSelect("whale")}
+            title={t("bot.whale.title")}
+            description={t("bot.whale.description")}
+            color="purple"
+          />
+          <BotTypeButton
+            botType="buy"
+            isSelected={selectedBot === "buy"}
+            onClick={() => onBotSelect("buy")}
+            title={t("bot.buy.title")}
+            description={t("bot.buy.description")}
+            color="red"
+          />
+        </div>
+
+        <div className="space-y-4">
+          <div>
+            <div className="flex justify-between mb-1">
+              <Label htmlFor="aggressiveness">{t("bot.config.aggressiveness")}</Label>
+              <span className="text-sm text-silver">{config.aggressiveness}%</span>
+            </div>
+            <Slider
+              id="aggressiveness"
+              min={0}
+              max={100}
+              step={5}
+              value={[config.aggressiveness]}
+              onValueChange={(values) => onConfigChange({ aggressiveness: values[0] })}
+              className="cursor-pointer"
+            />
+          </div>
+
+          <div>
+            <div className="flex justify-between mb-1">
+              <Label htmlFor="safetyLevel">{t("bot.config.safety")}</Label>
+              <span className="text-sm text-silver">{config.safetyLevel}%</span>
+            </div>
+            <Slider
+              id="safetyLevel"
+              min={0}
+              max={100}
+              step={5}
+              value={[config.safetyLevel]}
+              onValueChange={(values) => onConfigChange({ safetyLevel: values[0] })}
+              className="cursor-pointer"
+            />
+          </div>
+
+          <div>
+            <div className="flex justify-between mb-1">
+              <Label htmlFor="maxSlippage">{t("bot.config.slippage")}</Label>
+              <span className="text-sm text-silver">{config.maxSlippage}%</span>
+            </div>
+            <Slider
+              id="maxSlippage"
+              min={0.1}
+              max={5}
+              step={0.1}
+              value={[config.maxSlippage]}
+              onValueChange={(values) => onConfigChange({ maxSlippage: values[0] })}
+              className="cursor-pointer"
+            />
+          </div>
+
+          <div>
+            <Label htmlFor="gasBoost" className="mb-1 block">
+              {t("bot.config.gas")}
+            </Label>
+            <Select
+              value={config.gasBoost}
+              onValueChange={(value) => onConfigChange({ gasBoost: value as "low" | "medium" | "high" })}
             >
-              {getBotIcon(botType)}
-              <span>{botDescriptions[botType].title.split(" ")[0]}</span>
-            </button>
-          ))}
-        </div>
-        <p className="mt-3 text-sm text-silver">{botDescriptions[selectedBot].description}</p>
-      </div>
-
-      {/* Configuration Tabs */}
-      <div className="mb-6">
-        <div className="flex border-b border-white/10 mb-4">
-          <button
-            className={`py-2 px-4 text-sm font-medium ${
-              activeTab === "basic" ? "border-b-2 border-neon text-neon" : "text-silver"
-            }`}
-            onClick={() => setActiveTab("basic")}
-          >
-            Grundeinstellungen
-          </button>
-          <button
-            className={`py-2 px-4 text-sm font-medium ${
-              activeTab === "advanced" ? "border-b-2 border-neon text-neon" : "text-silver"
-            }`}
-            onClick={() => setActiveTab("advanced")}
-          >
-            Erweitert
-          </button>
+              <SelectTrigger className="bg-white/5 border-white/10">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent className="bg-dark border-white/10">
+                <SelectItem value="low">Low</SelectItem>
+                <SelectItem value="medium">Medium</SelectItem>
+                <SelectItem value="high">High</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </div>
 
-        {activeTab === "basic" ? (
-          <div className="space-y-6">
-            {/* Aggressiveness Slider */}
-            <div className="space-y-2">
-              <div className="flex justify-between">
-                <Label className="text-sm flex items-center gap-1">
-                  <Zap className="w-4 h-4 text-neon" />
-                  Aggressivität
-                </Label>
-                <span className="text-sm font-mono bg-white/10 px-2 rounded">{config.aggressiveness}%</span>
-              </div>
-              <Slider
-                defaultValue={[config.aggressiveness]}
-                max={100}
-                step={1}
-                onValueChange={(value) => handleSliderChange("aggressiveness", value)}
-              />
-              <div className="flex justify-between text-xs text-silver">
-                <span>Konservativ</span>
-                <span>Aggressiv</span>
-              </div>
-            </div>
-
-            {/* Safety Level Slider */}
-            <div className="space-y-2">
-              <div className="flex justify-between">
-                <Label className="text-sm flex items-center gap-1">
-                  <Shield className="w-4 h-4 text-blue" />
-                  Sicherheitslevel
-                </Label>
-                <span className="text-sm font-mono bg-white/10 px-2 rounded">{config.safetyLevel}%</span>
-              </div>
-              <Slider
-                defaultValue={[config.safetyLevel]}
-                max={100}
-                step={1}
-                onValueChange={(value) => handleSliderChange("safetyLevel", value)}
-              />
-              <div className="flex justify-between text-xs text-silver">
-                <span>Riskant</span>
-                <span>Sicher</span>
-              </div>
-            </div>
-
-            {/* Gas Boost Selection */}
-            <div className="space-y-2">
-              <Label className="text-sm flex items-center gap-1">
-                <Gauge className="w-4 h-4 text-purple" />
-                Gas Boost
-              </Label>
-              <Select defaultValue={config.gasBoost} onValueChange={handleGasBoostChange}>
-                <SelectTrigger className="bg-white/10 border-white/20">
-                  <SelectValue placeholder="Gas Boost auswählen" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="low">Niedrig (günstigere Gebühren)</SelectItem>
-                  <SelectItem value="medium">Mittel (ausgewogen)</SelectItem>
-                  <SelectItem value="high">Hoch (schnellere Ausführung)</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            {/* Take Profit & Stop Loss */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label className="text-sm">Auto Take-Profit</Label>
-                <div className="relative">
-                  <input
-                    type="number"
-                    className="w-full bg-white/10 border border-white/20 rounded-md px-3 py-2 text-sm"
-                    value={config.autoTakeProfit}
-                    onChange={(e) => onConfigChange({ autoTakeProfit: Number(e.target.value) })}
-                    min={0}
-                    max={1000}
-                  />
-                  <span className="absolute right-3 top-2 text-sm text-silver">%</span>
-                </div>
-              </div>
-              <div className="space-y-2">
-                <Label className="text-sm">Auto Stop-Loss</Label>
-                <div className="relative">
-                  <input
-                    type="number"
-                    className="w-full bg-white/10 border border-white/20 rounded-md px-3 py-2 text-sm"
-                    value={config.autoStopLoss}
-                    onChange={(e) => onConfigChange({ autoStopLoss: Number(e.target.value) })}
-                    min={0}
-                    max={100}
-                  />
-                  <span className="absolute right-3 top-2 text-sm text-silver">%</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div className="space-y-6">
-            {/* Max Slippage */}
-            <div className="space-y-2">
-              <div className="flex justify-between">
-                <Label className="text-sm">Max. Slippage</Label>
-                <span className="text-sm font-mono bg-white/10 px-2 rounded">{config.maxSlippage}%</span>
-              </div>
-              <Slider
-                defaultValue={[config.maxSlippage]}
-                min={0.1}
-                max={10}
-                step={0.1}
-                onValueChange={(value) => handleSliderChange("maxSlippage", value)}
-              />
-            </div>
-
-            {/* Trading Pair */}
-            <div className="space-y-2">
-              <Label className="text-sm">Trading Pair</Label>
-              <Select
-                defaultValue={config.tradingPair}
-                onValueChange={(value) => handleSelectChange("tradingPair", value)}
-              >
-                <SelectTrigger className="bg-white/10 border-white/20">
-                  <SelectValue placeholder="Trading Pair auswählen" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="ETH">ETH</SelectItem>
-                  <SelectItem value="USDT">USDT</SelectItem>
-                  <SelectItem value="USDC">USDC</SelectItem>
-                  <SelectItem value="BNB">BNB</SelectItem>
-                  <SelectItem value="SOL">SOL</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            {/* Timeframe */}
-            <div className="space-y-2">
-              <Label className="text-sm">Timeframe</Label>
-              <Select defaultValue={config.timeframe} onValueChange={handleTimeframeChange}>
-                <SelectTrigger className="bg-white/10 border-white/20">
-                  <SelectValue placeholder="Timeframe auswählen" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="5m">5 Minuten</SelectItem>
-                  <SelectItem value="15m">15 Minuten</SelectItem>
-                  <SelectItem value="1h">1 Stunde</SelectItem>
-                  <SelectItem value="4h">4 Stunden</SelectItem>
-                  <SelectItem value="1d">1 Tag</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            {/* Max Trades Per Day */}
-            <div className="space-y-2">
-              <Label className="text-sm">Max. Trades pro Tag</Label>
-              <input
-                type="number"
-                className="w-full bg-white/10 border border-white/20 rounded-md px-3 py-2 text-sm"
-                value={config.maxTradesPerDay}
-                onChange={(e) => onConfigChange({ maxTradesPerDay: Number(e.target.value) })}
-                min={1}
-                max={100}
-              />
-            </div>
-
-            {/* Toggles */}
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <Label className="text-sm cursor-pointer" htmlFor="anti-mev">
-                  Anti-MEV Schutz
-                </Label>
-                <Switch
-                  id="anti-mev"
-                  checked={config.useAntiMEV}
-                  onCheckedChange={(checked) => handleSwitchChange("useAntiMEV", checked)}
-                />
-              </div>
-              <div className="flex items-center justify-between">
-                <Label className="text-sm cursor-pointer" htmlFor="smart-routing">
-                  Smart Routing
-                </Label>
-                <Switch
-                  id="smart-routing"
-                  checked={config.useSmartRouting}
-                  onCheckedChange={(checked) => handleSwitchChange("useSmartRouting", checked)}
-                />
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Start Simulation Button */}
-      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-        <AnimatedCTAButton
+        <Button
           onClick={onStartSimulation}
           disabled={isSimulating}
-          color={botDescriptions[selectedBot].color as any}
-          className="w-full"
+          className={`w-full ${getBotColorClass(selectedBot)}`}
         >
-          {isSimulating ? "Simulation läuft..." : "Simulation starten"}
-        </AnimatedCTAButton>
-      </motion.div>
+          {isSimulating ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              {t("bot.config.running")}
+            </>
+          ) : (
+            t("bot.config.start")
+          )}
+        </Button>
+      </CardContent>
     </Card>
   )
 }
