@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import InteractiveHeader from "./components/interactive-header"
+import InteractiveHeader from "./components/interactive-header-new" // Use the new header component
 import AnimatedCTAButton from "./components/animated-cta-button"
 import InteractiveTestimonialCard from "./components/interactive-testimonial-card"
 import InteractiveFooter from "./components/interactive-footer"

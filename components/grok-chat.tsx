@@ -113,16 +113,25 @@ export default function GrokChat() {
       })
 
       if (!response.ok) {
-        throw new Error("Netzwerkantwort war nicht ok")
+        throw new Error(`Netzwerkantwort war nicht ok: ${response.status}`)
       }
 
       const data = await response.json()
+
+      if (data.error) {
+        throw new Error(data.error)
+      }
+
       setMessages((prev) => [...prev, { role: "assistant", content: data.response }])
     } catch (error) {
       console.error("Fehler beim Senden der Nachricht:", error)
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: "Entschuldigung, es gab ein Problem bei der Verarbeitung Ihrer Anfrage." },
+        {
+          role: "assistant",
+          content:
+            "Entschuldigung, es gab ein Problem bei der Verarbeitung Ihrer Anfrage. Unser Chat-Service ist momentan nicht verfügbar. Bitte versuchen Sie es später noch einmal.",
+        },
       ])
     } finally {
       setIsLoading(false)
@@ -150,7 +159,7 @@ export default function GrokChat() {
       <Button
         onClick={() => setIsOpen(true)}
         className="fixed bottom-6 left-6 h-14 w-14 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 p-0 shadow-lg hover:from-green-600 hover:to-emerald-700"
-        aria-label="Chat mit Grok öffnen"
+        aria-label="Chat mit AI öffnen"
       >
         <Brain className="h-6 w-6 text-white" />
         <span className="sr-only">Chat öffnen (Alt+C)</span>
@@ -163,7 +172,7 @@ export default function GrokChat() {
     return (
       <div className="fixed bottom-6 left-6 z-50 flex items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-4 py-2 text-white shadow-lg">
         <Bot className="h-5 w-5" />
-        <span className="font-medium">Grok AI</span>
+        <span className="font-medium">AI Assistent</span>
         <Button
           variant="ghost"
           size="icon"
@@ -184,7 +193,7 @@ export default function GrokChat() {
             <Avatar className="h-8 w-8 bg-white/20">
               <Bot className="h-5 w-5 text-white" />
             </Avatar>
-            <CardTitle className="text-base text-white">Grok AI Assistant</CardTitle>
+            <CardTitle className="text-base text-white">AI Assistent</CardTitle>
           </div>
           <div className="flex gap-1">
             <Button
@@ -215,7 +224,7 @@ export default function GrokChat() {
             <Bot className="mb-2 h-12 w-12 text-green-500" />
             <p className="mb-1 text-lg font-medium">Willkommen bei Rust Rocket!</p>
             <p className="mb-4 text-sm">
-              Fragen Sie Grok nach Informationen zu unseren Trading-Bots oder wie Sie loslegen können.
+              Fragen Sie unseren AI Assistenten nach Informationen zu unseren Trading-Bots oder wie Sie loslegen können.
             </p>
 
             {showSuggestions && (

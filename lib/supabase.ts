@@ -1,25 +1,39 @@
 import { createClient } from "@supabase/supabase-js"
-import { cookies } from "next/headers"
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
+import type { CookieOptions } from "@supabase/auth-helpers-nextjs"
 
-// Verwende die Umgebungsvariablen für die Supabase-Verbindung
+// Use environment variables for Supabase connection
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
 
-// Client für clientseitige Operationen (mit eingeschränkten Rechten)
+// Client for client-side operations (with limited rights)
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
-// Client mit Service-Rolle für serverseitige Operationen (mit vollen Rechten)
+// Client with service role for server-side operations (with full rights)
 export const serviceClient = createClient(supabaseUrl, supabaseServiceKey)
 
-// Exportiere eine Funktion, die den passenden Client zurückgibt
+// Export a function that returns the appropriate client
 export function createServiceClient() {
   return serviceClient
 }
 
-// Funktion zum Erstellen eines Server-Clients für Server Components
-export function createServerClient() {
+// Function to create a server client for Server Components
+export async function createServerClient() {
+  // Dynamic import to avoid "next/headers" being imported at module level
+  const { cookies } = await import("next/headers")
   const cookieStore = cookies()
-  return createServerComponentClient({ cookies: () => cookieStore })
+
+  return createClient(supabaseUrl, supabaseServiceKey, {
+    cookies: {
+      get(name: string) {
+        return cookieStore.get(name)?.value
+      },
+      set(name: string, value: string, options: CookieOptions) {
+        cookieStore.set({ name, value, ...options })
+      },
+      remove(name: string, options: CookieOptions) {
+        cookieStore.set({ name, value: "", ...options })
+      },
+    },
+  })
 }

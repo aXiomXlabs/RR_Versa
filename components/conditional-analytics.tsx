@@ -10,18 +10,22 @@ export function ConditionalAnalytics() {
   const [AnalyticsComponent, setAnalyticsComponent] = useState<React.ComponentType | null>(null)
 
   useEffect(() => {
-    // Nur Analytics laden, wenn der Benutzer analytischen Cookies zugestimmt hat
+    // Only load analytics if the user has consented to analytics cookies
     if (consent?.analytics) {
-      // Dynamischer Import der Analytics-Komponente
-      import("@vercel/analytics/react").then(({ Analytics }) => {
-        setAnalyticsComponent(() => Analytics)
-      })
+      // Dynamically import the Analytics component
+      import("@vercel/analytics/react")
+        .then(({ Analytics }) => {
+          setAnalyticsComponent(() => Analytics)
+        })
+        .catch((error) => {
+          console.error("Error loading analytics:", error)
+        })
     }
   }, [consent?.analytics])
 
-  // Wenn keine Zustimmung oder die Komponente noch nicht geladen ist, nichts rendern
+  // If no consent or component not loaded yet, render nothing
   if (!AnalyticsComponent) return null
 
-  // Andernfalls die Analytics-Komponente rendern
+  // Otherwise render the Analytics component
   return <AnalyticsComponent />
 }

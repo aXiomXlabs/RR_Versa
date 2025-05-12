@@ -40,10 +40,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={inter.className}>
         <LanguageProvider>
           <CookieConsentProvider>
-            <Suspense>{children}</Suspense>
-            <CookieConsentBanner />
-            <ConditionalScripts />
-            <ConditionalAnalytics />
+            <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+            <Suspense fallback={<div>Loading consent...</div>}>
+              <CookieConsentBanner />
+            </Suspense>
+            <Suspense fallback={null}>
+              <ConditionalScripts />
+            </Suspense>
+            <Suspense fallback={null}>
+              <ConditionalAnalytics />
+            </Suspense>
           </CookieConsentProvider>
         </LanguageProvider>
       </body>

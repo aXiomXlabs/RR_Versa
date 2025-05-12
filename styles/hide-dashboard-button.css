@@ -1,0 +1,10 @@
+/* Hide any element containing "header.dashboard" text */
+[data-testid="header-dashboard-button"],
+[id*="header-dashboard"],
+[class*="header-dashboard"],
+[aria-label*="header-dashboard"] {
+  display: none !important;
+}
+
+/* CSS can't select by text content directly, so we'll use a different approach */
+/* Let's add a script tag to the head to inject a style that targets the specific element */

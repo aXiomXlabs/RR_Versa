@@ -139,7 +139,6 @@ export default function InteractiveHeader() {
                     {t("header.dashboard")}
                   </button>
                 </Link>
-                {/* The header.dashboard button has been completely removed */}
               </motion.div>
 
               {/* Floating logo animation - hidden on mobile */}
