@@ -33,23 +33,6 @@
       ]
     }
   ],
-  "redirects": [
-    {
-      "source": "https://rust-rocket.com/:path*",
-      "destination": "https://www.rust-rocket.com/:path*",
-      "permanent": true
-    },
-    {
-      "source": "https://rustrocket.com/:path*",
-      "destination": "https://www.rust-rocket.com/:path*",
-      "permanent": true
-    },
-    {
-      "source": "https://www.rustrocket.com/:path*",
-      "destination": "https://www.rust-rocket.com/:path*",
-      "permanent": true
-    }
-  ],
   "crons": [
     {
       "path": "/api/cron/update-keywords?secret=$CRON_SECRET",
