@@ -1,0 +1,20 @@
+# DNS-Konfiguration für www.rust-rocket.com
+
+# A-Records für die Apex-Domain (rust-rocket.com)
+rust-rocket.com.     IN    A    76.76.21.21
+
+# CNAME-Record für die www-Subdomain
+www.rust-rocket.com.    IN    CNAME    cname.vercel-dns.com.
+
+# MX-Records für E-Mail-Dienste
+rust-rocket.com.     IN    MX    10 mx1.emailserver.com.
+rust-rocket.com.     IN    MX    20 mx2.emailserver.com.
+
+# TXT-Records für SPF, DKIM und DMARC
+rust-rocket.com.     IN    TXT    "v=spf1 include:_spf.google.com include:_spf.vercel.com ~all"
+_dmarc.rust-rocket.com.    IN    TXT    "v=DMARC1; p=reject; rua=mailto:dmarc@rust-rocket.com; ruf=mailto:dmarc@rust-rocket.com; fo=1"
+selector._domainkey.rust-rocket.com.    IN    TXT    "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrLHiExVd55zd/IQ/J/mRwSRMAocV/hMB3jXwaHH36d9NaVynQFYV8NaWi69c1veUtRzGt7yAioXqLj7Z4TeEUoOLgrKsn8YnckGs9i3B3tVFB+Ch/4mPhXWiNfNdynHWBcPcbJ8kjEQ2U8y78dHZj1YeRXXVvWob2OaKynO8/lQIDAQAB;"
+
+# CAA-Records für SSL-Zertifikate
+rust-rocket.com.     IN    CAA    0 issue "letsencrypt.org"
+rust-rocket.com.     IN    CAA    0 issuewild "letsencrypt.org"

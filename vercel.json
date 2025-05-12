@@ -1,0 +1,63 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "https://rust-rocket.com/:path*",
+      "destination": "https://www.rust-rocket.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "https://rustrocket.com/:path*",
+      "destination": "https://www.rust-rocket.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "https://www.rustrocket.com/:path*",
+      "destination": "https://www.rust-rocket.com/:path*",
+      "permanent": true
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/update-keywords?secret=$CRON_SECRET",
+      "schedule": "0 1 * * *"
+    },
+    {
+      "path": "/api/cron/keyword-alerts?secret=$CRON_SECRET",
+      "schedule": "0 9 * * *"
+    }
+  ]
+}

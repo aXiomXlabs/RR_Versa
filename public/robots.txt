@@ -1,0 +1,20 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Domain-Präfixe
+Host: https://www.rust-rocket.com
+Sitemap: https://www.rust-rocket.com/sitemap.xml
+
+# Sprachspezifische Pfade
+Allow: /de/
+Allow: /en/
+Allow: /es/
+Allow: /fr/
+Allow: /zh/
+
+# Nicht-www Version
+Allow: https://rust-rocket.com/
+
+# Alte Domain (falls vorhanden)
+Allow: https://rustrocket.com/
