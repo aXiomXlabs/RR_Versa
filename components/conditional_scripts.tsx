@@ -38,7 +38,7 @@ export function ConditionalScripts() {
       )}
 
       {/* Google Analytics 4 - nur laden, wenn Analytics-Cookies akzeptiert wurden */}
-      {/* Hinweis: Vercel Analytics wird über die VercelAnalyticsProvider-Komponente geladen */}
+      {/* Hinweis: Vercel Analytics wird automatisch über die VercelAnalyticsProvider-Komponente geladen */}
       {consent.analytics && (
         <>
           <Script src={`https://www.googletagmanager.com/gtag/js?id=G-6GRKXCYXWW`} strategy="afterInteractive" />

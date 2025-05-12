@@ -8,6 +8,8 @@ import { CookieConsentProvider } from "@/contexts/cookie-consent-context"
 import { CookieConsentBanner } from "@/components/cookie-consent-banner"
 import { ConditionalScripts } from "@/components/conditional-scripts"
 import { LanguageProvider } from "@/contexts/language-context"
+import { ConditionalAnalytics } from "@/components/conditional-analytics"
+import { Suspense } from "react"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -38,9 +40,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={inter.className}>
         <LanguageProvider>
           <CookieConsentProvider>
-            {children}
+            <Suspense>{children}</Suspense>
             <CookieConsentBanner />
             <ConditionalScripts />
+            <ConditionalAnalytics />
           </CookieConsentProvider>
         </LanguageProvider>
       </body>

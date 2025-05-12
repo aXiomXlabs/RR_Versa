@@ -10,7 +10,7 @@ export default function EventTracker() {
   // Track page views
   useEffect(() => {
     if (pathname) {
-      // Google Analytics
+      // Google Analytics (Vercel Analytics wird automatisch über die VercelAnalyticsProvider-Komponente geladen)
       if (window.gtag) {
         window.gtag("event", "page_view", {
           page_path: pathname,

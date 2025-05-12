@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react"
 import { X, Rocket, Wallet, FishIcon as Whale, ShoppingCart, ChevronRight } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import AnimatedBotCard from "./animated-bot-card"
 import CircuitBackground from "./circuit-background"
@@ -130,6 +131,14 @@ export default function InteractiveHeader() {
                 className="flex justify-center md:justify-start gap-4 flex-wrap"
               >
                 <AnimatedCTAButton href="https://t.me/rustrocket">{t("header.cta")}</AnimatedCTAButton>
+                <Link href="/dashboard" className="inline-block">
+                  <button
+                    className="px-6 py-3 rounded-lg bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white/20 transition-all duration-300 font-medium"
+                    data-cursor="button"
+                  >
+                    {t("header.dashboard")}
+                  </button>
+                </Link>
               </motion.div>
 
               {/* Floating logo animation - hidden on mobile */}

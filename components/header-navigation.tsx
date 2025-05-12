@@ -101,6 +101,15 @@ export default function HeaderNavigation() {
             </Link>
           ))}
 
+          {/* Dashboard Button */}
+          <Link
+            href="/dashboard"
+            className="ml-4 bg-neon text-black hover:bg-neon/90 transition-colors text-base font-medium px-5 py-2 rounded-md"
+            data-cursor="button"
+          >
+            Dashboard
+          </Link>
+
           {/* Language Selector */}
           <div className="relative ml-4">
             <button
@@ -213,6 +222,16 @@ export default function HeaderNavigation() {
                     {link.name}
                   </Link>
                 ))}
+
+                {/* Mobile Dashboard Button */}
+                <Link
+                  href="/dashboard"
+                  className="mt-4 bg-neon text-black hover:bg-neon/90 transition-colors text-xl font-medium px-6 py-2 rounded-md"
+                  onClick={handleLinkClick}
+                  data-cursor="button"
+                >
+                  Dashboard
+                </Link>
               </nav>
             </motion.div>
           )}

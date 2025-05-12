@@ -121,13 +121,86 @@ const translations: Record<Language, Record<string, string>> = {
     "bot.buy.description": "Automatisierte Kaufstrategien basierend auf technischen Indikatoren und Marktbedingungen.",
 
     // Bot Konfiguration
-    "bot.config.type": "Bot-Typ",
+    "bot.config.title": "Bot Konfiguration",
+    "bot.config.type": "Bot-Typ auswählen",
     "bot.config.aggressiveness": "Aggressivität",
     "bot.config.safety": "Sicherheitslevel",
     "bot.config.slippage": "Max. Slippage",
     "bot.config.gas": "Gas Boost",
     "bot.config.start": "Simulation starten",
     "bot.config.running": "Simulation läuft...",
+    "bot.config.conservative": "Konservativ",
+    "bot.config.aggressive": "Aggressiv",
+    "bot.config.risky": "Riskant",
+    "bot.config.safe": "Sicher",
+    "bot.config.gasLow": "Niedrig (günstigere Gebühren)",
+    "bot.config.gasMedium": "Mittel (ausgewogen)",
+    "bot.config.gasHigh": "Hoch (schnellere Ausführung)",
+    "bot.config.takeProfit": "Auto Take-Profit",
+    "bot.config.stopLoss": "Auto Stop-Loss",
+
+    // Simulation
+    "simulation.title": "Simulation",
+    "simulation.loading": "Simulation läuft...",
+    "simulation.configure": "Konfiguriere den Bot und starte die Simulation, um die Ergebnisse zu sehen.",
+    "simulation.timeframe": "Timeframe",
+    "simulation.roi": "ROI",
+    "simulation.winRate": "Win Rate",
+    "simulation.trades": "Trades",
+    "simulation.execTime": "Ausführungszeit",
+
+    // Ergebnisse
+    "results.title": "Simulationsergebnisse",
+    "results.compare": "Vergleich mit manuellem Trading",
+    "results.summary": "Zusammenfassung",
+    "results.trades": "Trades",
+    "results.metrics": "Metriken",
+    "results.performance": "Performance",
+    "results.startCapital": "Startkapital",
+    "results.endCapital": "Endkapital",
+    "results.absoluteProfit": "Absoluter Gewinn/Verlust",
+    "results.tradeCount": "Anzahl Trades",
+    "results.avgExecTime": "Durchschn. Ausführungszeit",
+    "results.advantages": "Bot-Vorteile",
+    "results.fastExecution": "Blitzschnelle Ausführung",
+    "results.fastExecutionDesc":
+      "Unter 10ms Reaktionszeit für maximalen Vorteil bei neuen Listings und Flash-Opportunities.",
+    "results.optimizedStrategies": "Optimierte Strategien",
+    "results.optimizedStrategiesDesc": "Datenbasierte Entscheidungen ohne emotionale Beeinflussung.",
+    "results.riskManagement": "Risikomanagement",
+    "results.riskManagementDesc":
+      "Automatische Take-Profit und Stop-Loss Mechanismen schützen dein Kapital und maximieren Gewinne.",
+    "results.download": "Vollständigen Bericht herunterladen",
+
+    // Vergleich
+    "compare.title": "Bot vs. Manuelles Trading",
+    "compare.manual": "Manuelles Trading",
+    "compare.result": "Ergebnis",
+    "compare.resultDesc":
+      "Mit dem Bot hättest du mehr verdient als mit manuellem Trading. Das entspricht einer besseren Performance.",
+    "compare.emotional": "Emotionale Entscheidungen",
+    "compare.emotionalDesc":
+      "Beim manuellen Trading wurden emotionale Entscheidungen getroffen, die zu suboptimalen Ergebnissen führten.",
+    "compare.missed": "Verpasste Chancen",
+    "compare.missedDesc": "Beim manuellen Trading wurden profitable Gelegenheiten verpasst, die der Bot genutzt hat.",
+    "compare.consistent": "Konsistente Ausführung",
+    "compare.consistentDesc":
+      "Der Bot führte alle Trades mit 100% Präzision aus, während beim manuellen Trading Ausführungsfehler auftraten.",
+
+    // Strategie Tabs
+    "strategy.strategies": "Strategien",
+    "strategy.features": "Features",
+    "strategy.usecases": "Anwendungsfälle",
+
+    // Allgemeine Trading-Begriffe
+    "trading.time": "Zeit",
+    "trading.token": "Token",
+    "trading.entry": "Einstieg",
+    "trading.exit": "Ausstieg",
+    "trading.volume": "Volumen",
+    "trading.pl": "G/V",
+    "trading.exchange": "Börse",
+    "trading.execTime": "Zeit (ms)",
   },
   en: {
     // Navigation
@@ -225,13 +298,85 @@ const translations: Record<Language, Record<string, string>> = {
     "bot.buy.description": "Automated buying strategies based on technical indicators and market conditions.",
 
     // Bot Configuration
-    "bot.config.type": "Bot Type",
+    "bot.config.title": "Bot Configuration",
+    "bot.config.type": "Select Bot Type",
     "bot.config.aggressiveness": "Aggressiveness",
     "bot.config.safety": "Safety Level",
     "bot.config.slippage": "Max Slippage",
     "bot.config.gas": "Gas Boost",
     "bot.config.start": "Start Simulation",
     "bot.config.running": "Simulation Running...",
+    "bot.config.conservative": "Conservative",
+    "bot.config.aggressive": "Aggressive",
+    "bot.config.risky": "Risky",
+    "bot.config.safe": "Safe",
+    "bot.config.gasLow": "Low (cheaper fees)",
+    "bot.config.gasMedium": "Medium (balanced)",
+    "bot.config.gasHigh": "High (faster execution)",
+    "bot.config.takeProfit": "Auto Take-Profit",
+    "bot.config.stopLoss": "Auto Stop-Loss",
+
+    // Simulation
+    "simulation.title": "Simulation",
+    "simulation.loading": "Simulation running...",
+    "simulation.configure": "Configure the bot and start the simulation to see the results.",
+    "simulation.timeframe": "Timeframe",
+    "simulation.roi": "ROI",
+    "simulation.winRate": "Win Rate",
+    "simulation.trades": "Trades",
+    "simulation.execTime": "Execution Time",
+
+    // Results
+    "results.title": "Simulation Results",
+    "results.compare": "Compare with Manual Trading",
+    "results.summary": "Summary",
+    "results.trades": "Trades",
+    "results.metrics": "Metrics",
+    "results.performance": "Performance",
+    "results.startCapital": "Starting Capital",
+    "results.endCapital": "Ending Capital",
+    "results.absoluteProfit": "Absolute Profit/Loss",
+    "results.tradeCount": "Number of Trades",
+    "results.avgExecTime": "Avg. Execution Time",
+    "results.advantages": "Bot Advantages",
+    "results.fastExecution": "Lightning-Fast Execution",
+    "results.fastExecutionDesc":
+      "Under 10ms reaction time for maximum advantage in new listings and flash opportunities.",
+    "results.optimizedStrategies": "Optimized Strategies",
+    "results.optimizedStrategiesDesc": "Data-driven decisions without emotional influence.",
+    "results.riskManagement": "Risk Management",
+    "results.riskManagementDesc":
+      "Automatic take-profit and stop-loss mechanisms protect your capital and maximize profits.",
+    "results.download": "Download Full Report",
+
+    // Comparison
+    "compare.title": "Bot vs. Manual Trading",
+    "compare.manual": "Manual Trading",
+    "compare.result": "Result",
+    "compare.resultDesc":
+      "With the bot, you would have earned more than with manual trading. This represents better performance.",
+    "compare.emotional": "Emotional Decisions",
+    "compare.emotionalDesc": "In manual trading, emotional decisions were made that led to suboptimal results.",
+    "compare.missed": "Missed Opportunities",
+    "compare.missedDesc": "In manual trading, profitable opportunities were missed that the bot capitalized on.",
+    "compare.consistent": "Consistent Execution",
+    "compare.consistentDesc":
+      "The bot executed all trades with 100% precision, while manual trading had execution errors.",
+
+    // Strategy Tabs
+    "strategy.strategies": "Strategies",
+    "strategy.features": "Features",
+    "strategy.usecases": "Use Cases",
+
+    // General Trading Terms
+    "trading.time": "Time",
+    "trading.token": "Token",
+    "trading.entry": "Entry",
+    "trading.exit": "Exit",
+    "trading.volume": "Volume",
+    "trading.pl": "P/L",
+    "trading.exchange": "Exchange",
+    "trading.execTime": "Time (ms)",
   },
   es: {
     // Navigation
@@ -333,13 +478,86 @@ const translations: Record<Language, Record<string, string>> = {
       "Estrategias de compra automatizadas basadas en indicadores técnicos y condiciones del mercado.",
 
     // Bot Configuration
-    "bot.config.type": "Tipo de Bot",
+    "bot.config.title": "Configuración del Bot",
+    "bot.config.type": "Seleccionar Tipo de Bot",
     "bot.config.aggressiveness": "Agresividad",
     "bot.config.safety": "Nivel de Seguridad",
     "bot.config.slippage": "Deslizamiento Máx",
     "bot.config.gas": "Impulso de Gas",
     "bot.config.start": "Iniciar Simulación",
     "bot.config.running": "Simulación en Curso...",
+    "bot.config.conservative": "Conservador",
+    "bot.config.aggressive": "Agresivo",
+    "bot.config.risky": "Arriesgado",
+    "bot.config.safe": "Seguro",
+    "bot.config.gasLow": "Bajo (tarifas más económicas)",
+    "bot.config.gasMedium": "Medio (equilibrado)",
+    "bot.config.gasHigh": "Alto (ejecución más rápida)",
+    "bot.config.takeProfit": "Auto Take-Profit",
+    "bot.config.stopLoss": "Auto Stop-Loss",
+
+    // Simulation
+    "simulation.title": "Simulación",
+    "simulation.loading": "Simulación en curso...",
+    "simulation.configure": "Configura el bot e inicia la simulación para ver los resultados.",
+    "simulation.timeframe": "Marco temporal",
+    "simulation.roi": "ROI",
+    "simulation.winRate": "Tasa de Éxito",
+    "simulation.trades": "Operaciones",
+    "simulation.execTime": "Tiempo de Ejecución",
+
+    // Results
+    "results.title": "Resultados de la Simulación",
+    "results.compare": "Comparar con Trading Manual",
+    "results.summary": "Resumen",
+    "results.trades": "Operaciones",
+    "results.metrics": "Métricas",
+    "results.performance": "Rendimiento",
+    "results.startCapital": "Capital Inicial",
+    "results.endCapital": "Capital Final",
+    "results.absoluteProfit": "Beneficio/Pérdida Absoluta",
+    "results.tradeCount": "Número de Operaciones",
+    "results.avgExecTime": "Tiempo de Ejecución Promedio",
+    "results.advantages": "Ventajas del Bot",
+    "results.fastExecution": "Ejecución Ultrarrápida",
+    "results.fastExecutionDesc":
+      "Tiempo de reacción inferior a 10ms para máxima ventaja en nuevos listados y oportunidades flash.",
+    "results.optimizedStrategies": "Estrategias Optimizadas",
+    "results.optimizedStrategiesDesc": "Decisiones basadas en datos sin influencia emocional.",
+    "results.riskManagement": "Gestión de Riesgos",
+    "results.riskManagementDesc":
+      "Mecanismos automáticos de take-profit y stop-loss protegen tu capital y maximizan beneficios.",
+    "results.download": "Descargar Informe Completo",
+
+    // Comparison
+    "compare.title": "Bot vs. Trading Manual",
+    "compare.manual": "Trading Manual",
+    "compare.result": "Resultado",
+    "compare.resultDesc":
+      "Con el bot, habrías ganado más que con trading manual. Esto representa un mejor rendimiento.",
+    "compare.emotional": "Decisiones Emocionales",
+    "compare.emotionalDesc":
+      "En el trading manual, se tomaron decisiones emocionales que llevaron a resultados subóptimos.",
+    "compare.missed": "Oportunidades Perdidas",
+    "compare.missedDesc": "En el trading manual, se perdieron oportunidades rentables que el bot aprovechó.",
+    "compare.consistent": "Ejecución Consistente",
+    "compare.consistentDesc":
+      "El bot ejecutó todas las operaciones con 100% de precisión, mientras que el trading manual tuvo errores de ejecución.",
+
+    // Strategy Tabs
+    "strategy.strategies": "Estrategias",
+    "strategy.features": "Características",
+    "strategy.usecases": "Casos de Uso",
+
+    // General Trading Terms
+    "trading.time": "Hora",
+    "trading.token": "Token",
+    "trading.entry": "Entrada",
+    "trading.exit": "Salida",
+    "trading.volume": "Volumen",
+    "trading.pl": "G/P",
+    "trading.exchange": "Intercambio",
+    "trading.execTime": "Tiempo (ms)",
   },
   fr: {
     // Navigation
@@ -444,13 +662,87 @@ const translations: Record<Language, Record<string, string>> = {
       "Stratégies d'achat automatisées basées sur des indicateurs techniques et conditions de marché.",
 
     // Bot Configuration
-    "bot.config.type": "Type de Bot",
+    "bot.config.title": "Configuration du Bot",
+    "bot.config.type": "Sélectionner Type de Bot",
     "bot.config.aggressiveness": "Agressivité",
     "bot.config.safety": "Niveau de Sécurité",
     "bot.config.slippage": "Slippage Max",
     "bot.config.gas": "Boost de Gas",
     "bot.config.start": "Démarrer Simulation",
     "bot.config.running": "Simulation en Cours...",
+    "bot.config.conservative": "Conservateur",
+    "bot.config.aggressive": "Agressif",
+    "bot.config.risky": "Risqué",
+    "bot.config.safe": "Sûr",
+    "bot.config.gasLow": "Bas (frais moins chers)",
+    "bot.config.gasMedium": "Moyen (équilibré)",
+    "bot.config.gasHigh": "Élevé (exécution plus rapide)",
+    "bot.config.takeProfit": "Auto Take-Profit",
+    "bot.config.stopLoss": "Auto Stop-Loss",
+
+    // Simulation
+    "simulation.title": "Simulation",
+    "simulation.loading": "Simulation en cours...",
+    "simulation.configure": "Configurez le bot et démarrez la simulation pour voir les résultats.",
+    "simulation.timeframe": "Période",
+    "simulation.roi": "ROI",
+    "simulation.winRate": "Taux de Réussite",
+    "simulation.trades": "Trades",
+    "simulation.execTime": "Temps d'Exécution",
+
+    // Results
+    "results.title": "Résultats de Simulation",
+    "results.compare": "Comparer avec Trading Manuel",
+    "results.summary": "Résumé",
+    "results.trades": "Trades",
+    "results.metrics": "Métriques",
+    "results.performance": "Performance",
+    "results.startCapital": "Capital Initial",
+    "results.endCapital": "Capital Final",
+    "results.absoluteProfit": "Profit/Perte Absolue",
+    "results.tradeCount": "Nombre de Trades",
+    "results.avgExecTime": "Temps d'Exécution Moyen",
+    "results.advantages": "Avantages du Bot",
+    "results.fastExecution": "Exécution Ultra-rapide",
+    "results.fastExecutionDesc":
+      "Temps de réaction inférieur à 10ms pour un avantage maximal sur les nouveaux listings et opportunités flash.",
+    "results.optimizedStrategies": "Stratégies Optimisées",
+    "results.optimizedStrategiesDesc": "Décisions basées sur les données sans influence émotionnelle.",
+    "results.riskManagement": "Gestion des Risques",
+    "results.riskManagementDesc":
+      "Les mécanismes automatiques de take-profit et stop-loss protègent votre capital et maximisent les profits.",
+    "results.download": "Télécharger Rapport Complet",
+
+    // Comparison
+    "compare.title": "Bot vs. Trading Manuel",
+    "compare.manual": "Trading Manuel",
+    "compare.result": "Résultat",
+    "compare.resultDesc":
+      "Avec le bot, vous auriez gagné plus qu'avec le trading manuel. Cela représente une meilleure performance.",
+    "compare.emotional": "Décisions Émotionnelles",
+    "compare.emotionalDesc":
+      "Dans le trading manuel, des décisions émotionnelles ont été prises qui ont conduit à des résultats sous-optimaux.",
+    "compare.missed": "Opportunités Manquées",
+    "compare.missedDesc":
+      "Dans le trading manuel, des opportunités rentables ont été manquées que le bot a exploitées.",
+    "compare.consistent": "Exécution Constante",
+    "compare.consistentDesc":
+      "Le bot a exécuté tous les trades avec 100% de précision, tandis que le trading manuel a eu des erreurs d'exécution.",
+
+    // Strategy Tabs
+    "strategy.strategies": "Stratégies",
+    "strategy.features": "Fonctionnalités",
+    "strategy.usecases": "Cas d'Utilisation",
+
+    // General Trading Terms
+    "trading.time": "Heure",
+    "trading.token": "Token",
+    "trading.entry": "Entrée",
+    "trading.exit": "Sortie",
+    "trading.volume": "Volume",
+    "trading.pl": "P/L",
+    "trading.exchange": "Échange",
+    "trading.execTime": "Temps (ms)",
   },
   zh: {
     // Navigation
@@ -542,13 +834,81 @@ const translations: Record<Language, Record<string, string>> = {
     "bot.buy.description": "基于技术指标和市场条件的自动购买策略。",
 
     // Bot Configuration
-    "bot.config.type": "机器人类型",
+    "bot.config.title": "机器人配置",
+    "bot.config.type": "选择机器人类型",
     "bot.config.aggressiveness": "激进程度",
     "bot.config.safety": "安全级别",
     "bot.config.slippage": "最大滑点",
     "bot.config.gas": "Gas提升",
     "bot.config.start": "开始模拟",
     "bot.config.running": "模拟运行中...",
+    "bot.config.conservative": "保守",
+    "bot.config.aggressive": "激进",
+    "bot.config.risky": "风险",
+    "bot.config.safe": "安全",
+    "bot.config.gasLow": "低（更便宜的费用）",
+    "bot.config.gasMedium": "中（平衡）",
+    "bot.config.gasHigh": "高（更快的执行）",
+    "bot.config.takeProfit": "自动止盈",
+    "bot.config.stopLoss": "自动止损",
+
+    // Simulation
+    "simulation.title": "模拟",
+    "simulation.loading": "模拟运行中...",
+    "simulation.configure": "配置机器人并开始模拟以查看结果。",
+    "simulation.timeframe": "时间框架",
+    "simulation.roi": "投资回报率",
+    "simulation.winRate": "胜率",
+    "simulation.trades": "交易",
+    "simulation.execTime": "执行时间",
+
+    // Results
+    "results.title": "模拟结果",
+    "results.compare": "与手动交易比较",
+    "results.summary": "摘要",
+    "results.trades": "交易",
+    "results.metrics": "指标",
+    "results.performance": "表现",
+    "results.startCapital": "起始资本",
+    "results.endCapital": "最终资本",
+    "results.absoluteProfit": "绝对利润/损失",
+    "results.tradeCount": "交易次数",
+    "results.avgExecTime": "平均执行时间",
+    "results.advantages": "机器人优势",
+    "results.fastExecution": "闪电般的执行",
+    "results.fastExecutionDesc": "在新上市和闪电机会中，反应时间低于10毫秒，获得最大优势。",
+    "results.optimizedStrategies": "优化策略",
+    "results.optimizedStrategiesDesc": "数据驱动决策，没有情绪影响。",
+    "results.riskManagement": "风险管理",
+    "results.riskManagementDesc": "自动止盈和止损机制保护您的资本并最大化利润。",
+    "results.download": "下载完整报告",
+
+    // Comparison
+    "compare.title": "机器人 vs. 手动交易",
+    "compare.manual": "手动交易",
+    "compare.result": "结果",
+    "compare.resultDesc": "使用机器人，您将比手动交易赚取更多。这代表更好的表现。",
+    "compare.emotional": "情绪决策",
+    "compare.emotionalDesc": "在手动交易中，做出了情绪决策，导致次优结果。",
+    "compare.missed": "错过的机会",
+    "compare.missedDesc": "在手动交易中，错过了机器人利用的有利可图的机会。",
+    "compare.consistent": "一致执行",
+    "compare.consistentDesc": "机器人以100%的精度执行所有交易，而手动交易存在执行错误。",
+
+    // Strategy Tabs
+    "strategy.strategies": "策略",
+    "strategy.features": "特点",
+    "strategy.usecases": "使用案例",
+
+    // General Trading Terms
+    "trading.time": "时间",
+    "trading.token": "代币",
+    "trading.entry": "入场",
+    "trading.exit": "出场",
+    "trading.volume": "交易量",
+    "trading.pl": "盈亏",
+    "trading.exchange": "交易所",
+    "trading.execTime": "时间（毫秒）",
   },
 }
 
